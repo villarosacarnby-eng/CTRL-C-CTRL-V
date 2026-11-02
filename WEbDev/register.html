@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Register | Hope, Inc. ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="register">
+  <div class="auth-split">
+    <aside class="auth-side">
+      <div class="brand">Hope, Inc. ERP</div>
+      <div><h2>A clearer way<br />to work.</h2><p class="lead">One workspace for the relationships, records and people that move your business forward.</p></div>
+      <ul><li>CONNECTED RECORDS</li><li>CONSIDERED ACCESS</li><li>CONFIDENT DECISIONS</li></ul>
+      <p class="copy">&copy; 2026 Hope, Inc.</p>
+    </aside>
+    <main class="auth-main">
+      <a class="back" href="index.html">&larr; Back to Hope, Inc.</a>
+      <div class="auth-box">
+        <span class="eyebrow">Your Hope workspace</span>
+        <h1>Start with Hope.</h1>
+        <p class="sub">Create your account with your work email.</p>
+        <p class="form-msg" id="formMsg" role="status"></p>
+        <form id="registerForm" novalidate>
+        <div class="grid-2">
+        <div class="field"><label for="first">First name</label><input class="inp" id="first" type="text" placeholder="" autocomplete="given-name" /><p class="field-error" id="firstError" role="alert"></p></div>
+        <div class="field"><label for="last">Last name</label><input class="inp" id="last" type="text" placeholder="" autocomplete="family-name" /><p class="field-error" id="lastError" role="alert"></p></div>
+        </div>
+        <div class="field"><label for="email">Email address</label><input class="inp" id="email" type="email" placeholder="" autocomplete="email" /><p class="field-error" id="emailError" role="alert"></p></div>
+        <div class="field"><label for="password">Password</label><div class="pw"><input class="inp" id="password" type="password" placeholder="" autocomplete="new-password" /><button type="button" data-toggle="password">Show</button></div><p class="field-error" id="passwordError" role="alert"></p></div>
+        <p class="hint" style="margin:-10px 0 18px">Use at least 12 characters, including a number and symbol.</p>
+        <div class="field"><label for="confirm">Confirm password</label><div class="pw"><input class="inp" id="confirm" type="password" placeholder="" autocomplete="new-password" /><button type="button" data-toggle="confirm">Show</button></div><p class="field-error" id="confirmError" role="alert"></p></div>
+        <div class="notice"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.8 2.8L16 9.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Every new account receives the User role. An administrator will assign your access rights.</span></div>
+        <button class="btn btn-primary" type="submit">Register &rarr;</button>
+        </form>
+        <div class="panel-card" id="doneCard" hidden><h3>Check your email</h3><p class="small">We sent a confirmation link to your email address. Open it, then sign in.</p><p style="margin-top:16px"><a class="btn btn-primary" href="login.html">Go to Sign In</a></p></div>
+        <p class="auth-alt">Already have an account? <a href="login.html">Sign In</a></p>
+        <p class="auth-help">Need access help? Contact your organization administrator.</p>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="core.js"></script>
+  <script src="auth.js"></script>
+</body>
+</html>
