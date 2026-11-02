@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reports | Hope, Inc. ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="reports" data-nav="reports" data-crumb="Reports" data-roles="superadmin,admin,user">
+  <main id="page" hidden>
+    <div id="noAccess" class="notice warn" hidden><span id="noAccessText"></span><a class="btn btn-outline" href="dashboard.html">Back to Dashboard</a></div>
+    <div id="mainArea">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow" data-eyebrow></p>
+        <h1>Reports</h1>
+        <p class="sub">Read-only views of your business. Choose the report, then view, print or save as PDF.</p>
+      </div>
+      
+    </div>
+    <section class="card no-print">
+      <h2>Choose a report</h2><p class="small">Rank active transactions or customers by calculated sale totals.</p>
+      <div class="field"><label for="reportType">Report</label><select class="inp" id="reportType"><option value="top-sales">Top Sales &mdash; rank active transactions by sale total</option><option value="top-customers">Top Customers &mdash; rank customers by revenue</option></select></div>
+      <div class="grid-2">
+        <div class="field"><label for="fromDate">From date</label><input class="inp" id="fromDate" type="date" /></div>
+        <div class="field"><label for="toDate">To date</label><input class="inp" id="toDate" type="date" /></div>
+      </div>
+      <div class="field" style="max-width:240px"><label for="topN">Top N</label><input class="inp" id="topN" type="number" min="1" max="1000" value="10" /></div>
+      <p class="form-error" id="reportError" role="alert"></p>
+      <div class="rp-actions"><button type="button" class="btn btn-primary" id="viewBtn">View Report</button><button type="button" class="btn btn-outline" id="printBtn">Print</button><button type="button" class="btn btn-outline" id="pdfBtn">Save as PDF</button></div>
+    </section>
+    <section class="card" id="preview">
+      <div class="rp-head"><span class="eyebrow">Report preview &middot; Read only</span>
+        <div class="rp-actions no-print" style="margin:0"><button type="button" class="btn btn-outline" id="printBtn2">Print</button><button type="button" class="btn btn-primary" id="pdfBtn2">Save as PDF</button></div></div>
+      <div class="rp-head"><div class="rp-title"><h2>Hope, Inc. ERP</h2><h3 id="rpTitle">Top Sales</h3><p class="rp-meta" id="rpMeta">Choose report filters to begin.</p></div><span class="rp-meta" id="rpStatus">Report not generated</span></div>
+      <div class="tbl-wrap rp-tbl"><div class="tbl-scroll"><table class="tbl"><thead id="rpHead"></thead><tbody id="rpBody"><tr><td class="tbl-empty">No records yet. Records will appear after data is added.</td></tr></tbody></table></div></div>
+      <div class="rp-total"><span>Total</span><b id="rpTotal">&mdash;</b></div>
+      <div class="rp-foot"><span id="rpNote">Reports are read only. Results will appear after records are added and a report is generated.</span><span>Hope, Inc. &middot; Internal business report</span></div>
+    </section>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="core.js"></script>
+  <script src="pages.js"></script>
+</body>
+</html>
