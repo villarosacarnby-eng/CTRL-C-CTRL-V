@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>New sale | Hope, Inc. ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="sale-form" data-nav="sales" data-crumb="New sale" data-roles="superadmin,admin,user">
+  <main id="page" hidden>
+    <div id="noAccess" class="notice warn" hidden><span id="noAccessText"></span><a class="btn btn-outline" href="dashboard.html">Back to Dashboard</a></div>
+    <div id="mainArea">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow" data-eyebrow></p>
+        <h1 id="saleTitle">New sale</h1>
+        <p class="sub" id="saleSub">Enter sale information and add product lines to begin.</p>
+      </div>
+      <a class="btn btn-outline" id="backLink" href="sales.html" hidden>View all sales</a>
+    </div>
+    <form id="saleForm" novalidate>
+      <section class="card">
+        <h2>Sale information</h2><p class="small">Existing customer and employee records only. Transaction numbers are generated automatically.</p>
+        <div class="grid-2">
+          <div class="field"><label for="saleTxn">Transaction number &middot; Read only</label><input class="inp" id="saleTxn" readonly /></div>
+          <div class="field"><label for="saleDate">Sales date *</label><input class="inp" id="saleDate" type="date" /></div>
+          <div class="field"><label for="saleCustomer">Customer *</label><select class="inp" id="saleCustomer"></select></div>
+          <div class="field"><label for="saleEmployee">Employee *</label><select class="inp" id="saleEmployee"></select></div>
+        </div>
+      </section>
+      <section class="card">
+        <h2>Product lines</h2><p class="small">Unit prices resolve from the latest effective, active price on the sales date.</p>
+        <div id="lines"></div>
+        <button type="button" class="btn btn-outline" id="addLine">+ Add product line</button>
+        <div class="grand"><span>Grand total</span><b id="grandTotal">&mdash;</b></div>
+        <p class="muted tiny" id="totalNote" style="margin-top:14px">Totals will be calculated after product lines are entered.</p>
+      </section>
+      <p class="form-error" id="formError" role="alert" style="margin-top:16px"></p>
+      <div class="form-actions"><a class="btn btn-outline" id="cancelSale" href="sales.html">Cancel</a><button class="btn btn-primary" id="saveSale" type="submit">Save sale</button></div>
+    </form>
+    <div class="notice"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.8 2.8L16 9.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Sale actions are available according to the signed-in account&rsquo;s permissions.</span></div>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="core.js"></script>
+  <script src="pages.js"></script>
+</body>
+</html>
