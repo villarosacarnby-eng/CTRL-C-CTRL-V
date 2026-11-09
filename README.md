@@ -182,5 +182,4 @@ By integrating frontend technologies with a centralized database, the project de
 ---
 
 **Project Name:** Hope, Inc. ERP  
-**Project Type:** Web-Based Enterprise Resource Planning System  
 **Repository:** CTRL-C-CTRL-V
