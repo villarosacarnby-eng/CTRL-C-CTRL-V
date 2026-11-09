@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Job history | Hope, Inc. ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="job-history" data-nav="hr" data-crumb="Job history" data-roles="superadmin,admin">
+  <main id="page" hidden>
+    <div id="noAccess" class="notice warn" hidden><span id="noAccessText"></span><a class="btn btn-outline" href="hr.html">Back to Human Resources</a></div>
+    <div id="mainArea">
+    <div class="page-head">
+      <div>
+        <p class="eyebrow" data-eyebrow></p>
+        <h1>Job history</h1>
+        <p class="sub"><span id="jhSub">Human Resources / Employees / Job history</span></p>
+      </div>
+      <button type="button" class="btn btn-primary" id="crudAdd">+ Add job history</button>
+    </div>
+    <section class="card sub-card">
+      <h2 id="jhTitle">&mdash;</h2>
+      <p class="small">Choose an employee to view their job history.</p>
+      <div class="field" style="margin-bottom:14px"><label for="jhEmployee" class="sr">Employee</label><select class="inp" id="jhEmployee"></select></div>
+      <p id="jhCurrent" style="font-size:14px">No assignment data yet.</p>
+    </section>
+    <div class="toolbar">
+    </div>
+    <div class="tbl-wrap">
+      <div class="tbl-scroll"><table class="tbl"><thead id="crudHead"></thead><tbody id="crudBody"></tbody></table></div>
+      <div class="tbl-foot"><span id="crudCount">No records</span><span><button type="button" id="crudPrev">&lsaquo; Previous</button><button type="button" id="crudNext">Next &rsaquo;</button></span></div>
+    </div>
+    <div class="notice"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.8 2.8L16 9.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Current assignment is the latest active effective record on or before today. Salary is annual PHP. View, Add, Edit and Delete Job History are separately granted rights.</span></div>
+    </div>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="core.js"></script>
+  <script src="pages.js"></script>
+</body>
+</html>
