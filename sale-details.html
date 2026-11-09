@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sale details | Hope, Inc. ERP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body data-page="sale-details" data-nav="sales" data-crumb="Sale details" data-roles="superadmin,admin,user">
+  <main id="page" hidden>
+    <div class="page-head"><div><p class="eyebrow" data-eyebrow></p><h1>Sale details</h1><p class="sub">Sales / Transaction details</p></div>
+      <a class="btn btn-primary" id="sdEdit" href="sale-form.html" hidden>Edit sale</a></div>
+    <div class="notice"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.8 2.8L16 9.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span id="sdState">Loading&hellip;</span></div>
+    <section class="card">
+      <h2>Transaction overview</h2><p class="small">Existing customer and employee records only. Transaction numbers are generated automatically.</p>
+      <div class="grid-2">
+        <div class="field"><label for="sdTxn">Transaction number &middot; Read only</label><input class="inp" id="sdTxn" readonly /></div>
+        <div class="field"><label for="sdDate">Sales date &middot; Read only</label><input class="inp" id="sdDate" readonly /></div>
+        <div class="field"><label for="sdCustomer">Customer &middot; Read only</label><input class="inp" id="sdCustomer" readonly /></div>
+        <div class="field"><label for="sdEmployee">Employee &middot; Read only</label><input class="inp" id="sdEmployee" readonly /></div>
+      </div>
+    </section>
+    <section class="card">
+      <h2>Product lines</h2><p class="small">Unit prices resolve from the latest effective, active price on the sales date.</p>
+      <div class="tbl-wrap"><div class="tbl-scroll"><table class="tbl"><thead><tr><th>Product</th><th>Quantity</th><th>Unit price</th><th>Line total</th></tr></thead><tbody id="sdLines"></tbody></table></div></div>
+      <div class="grand"><span>Grand total</span><b id="sdTotal">&mdash;</b></div>
+    </section>
+    <div class="notice"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M8 12.3l2.8 2.8L16 9.6" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Editing requires Edit Sale and Edit Sale Details permissions. User accounts do not see audit or status columns.</span></div>
+    <a class="btn btn-outline" id="sdBack" href="sales.html">&larr; Back to sales</a>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+  <script src="config.js"></script>
+  <script src="core.js"></script>
+  <script src="pages.js"></script>
+</body>
+</html>
