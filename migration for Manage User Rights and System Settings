@@ -1,0 +1,59 @@
+-- Hope ERP: migration for Manage User Rights + System Settings
+-- Run this once in Supabase SQL Editor on an EXISTING Hope ERP database.
+
+-- Expand the Admin permission grants to match the new rights screen.
+drop policy if exists rights_insert on public.user_rights;
+create policy rights_insert on public.user_rights for insert to authenticated
+  with check (
+    public.is_superadmin()
+    or (
+      public.current_role_name() = 'admin'
+      and right_code = any (array[
+        'module.customers','module.products','module.hr','module.sales','module.reports',
+        'customers.add','customers.edit','customers.delete',
+        'products.add','products.edit','products.delete',
+        'prices.add','prices.edit','prices.delete',
+        'jobs.add','jobs.edit','jobs.delete',
+        'departments.add','departments.edit','departments.delete',
+        'employees.add','employees.edit','employees.delete',
+        'jobhistory.view','jobhistory.add','jobhistory.edit','jobhistory.delete',
+        'sales.add','sales.edit','sales.delete','sales.view_details',
+        'sales.add_details','sales.edit_details','sales.delete_details',
+        'reports.view','reports.top_customers','reports.product_master',
+        'reports.top_products','reports.active_employees','reports.all_employees',
+        'reports.employee_job_history','reports.top_sales'
+      ])
+      and exists (select 1 from public.profiles p where p.id = user_id and p.role = 'user')
+    )
+  );
+
+-- Store workspace-wide settings. The singleton row uses id = 1.
+create table if not exists public.workspace_settings (
+  id integer primary key check (id = 1),
+  org_name text not null default 'Hope, Inc. ERP',
+  business_address text not null default '',
+  contact_email text not null default '',
+  currency text not null default 'PHP',
+  date_display text not null default 'DD MMM YYYY',
+  timezone text not null default 'Asia/Manila',
+  min_password_length integer not null default 8 check (min_password_length between 6 and 64),
+  session_timeout integer not null default 30 check (session_timeout >= 0),
+  require_complex_password boolean not null default true,
+  prevent_blocked_signin boolean not null default true,
+  updated_at timestamptz not null default now(),
+  updated_by uuid references auth.users(id),
+  updated_by_name text
+);
+
+drop trigger if exists audit_workspace_settings on public.workspace_settings;
+create trigger audit_workspace_settings before insert or update on public.workspace_settings
+  for each row execute function public.set_audit();
+
+alter table public.workspace_settings enable row level security;
+drop policy if exists workspace_settings_superadmin on public.workspace_settings;
+create policy workspace_settings_superadmin on public.workspace_settings
+  for all to authenticated
+  using (public.is_superadmin())
+  with check (public.is_superadmin());
+
+grant select, insert, update on public.workspace_settings to authenticated;
