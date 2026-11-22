@@ -1,0 +1,17 @@
+Description
+
+Successfully accessed the Registration page.
+
+Identified that the Continue with Google option is missing.
+
+The social sign-up options (Google/Facebook) are not displayed on the Registration page.
+
+This differs from the expected registration flow, which includes a Continue with Google option.
+
+Further verification is needed to ensure the missing option is addressed.
+
+Testing Result
+
+Status: Partially Passed
+
+Issues Found: Missing Continue with Google option.
