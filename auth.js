@@ -95,7 +95,7 @@
         password: f.pass.value,
         options: {
           data: { first_name: f.first.value.trim(), last_name: f.last.value.trim() },
-          emailRedirectTo: 'https://hopeincerp.netlify.app/login.html',
+          emailRedirectTo: new URL('login.html', location.href).href,
         },
       });
       if (error) { btn.disabled = false; say(error.message); return; }
@@ -116,7 +116,7 @@
       if (!fieldError(email, !email.value.trim() ? 'Enter your email address.' : !EMAIL_RE.test(email.value.trim()) ? 'Enter a valid email address.' : '')) return;
       const btn = $('#forgotForm [type=submit]');
       btn.disabled = true;
-      const { error } = await sb.auth.resetPasswordForEmail(email.value.trim(), { redirectTo: 'https://hopeincerp.netlify.app/reset-password.html' });
+      const { error } = await sb.auth.resetPasswordForEmail(email.value.trim(), { redirectTo: new URL('reset-password.html', location.href).href });
       btn.disabled = false;
       // Same message whether or not the account exists (so nobody can probe for emails)
       if (error && /rate|limit|seconds/i.test(error.message)) { say('Please wait a moment before requesting another link.'); return; }
