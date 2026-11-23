@@ -1,0 +1,23 @@
+Description
+
+Successfully accessed the Customer Management page.
+
+Verified that the Add Customer modal opens properly.
+
+Tested the customer information input fields and save functionality.
+
+Confirmed that new customer records are added successfully.
+
+Verified that the Edit modal displays the correct customer information.
+
+Tested updating existing customer records.
+
+Confirmed that all tested functions work as expected.
+
+No errors or unexpected behavior were encountered.
+
+Testing Result
+
+Status: Passed
+
+Issues Found: None
