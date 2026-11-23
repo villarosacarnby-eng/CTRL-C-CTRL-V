@@ -1,0 +1,19 @@
+Description
+
+Successfully accessed the User Dashboard.
+
+Verified that the dashboard loads properly.
+
+Tested the sidebar navigation and available dashboard features.
+
+Confirmed that the dashboard functions as expected under the User role.
+
+Verified that the available modules and interactive elements work properly.
+
+No errors or unexpected behavior were encountered during testing.
+
+Testing Result
+
+Status: Passed
+
+Issues Found: None
