@@ -1,0 +1,21 @@
+Description
+
+Successfully accessed the Jobs section under Human Resources.
+
+Verified that existing job records are displayed properly.
+
+Tested the Add Job and Edit Job functionalities.
+
+Confirmed that job information can be managed successfully.
+
+Verified that job codes and job titles are displayed correctly.
+
+Tested the available search and record management features.
+
+No errors or unexpected behavior were encountered during testing.
+
+Testing Result
+
+Status: Passed
+
+Issues Found: None
